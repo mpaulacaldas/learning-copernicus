@@ -96,8 +96,6 @@ ee_check_credentials()
 # Install missing dependencies
 install.packages("googleCloudStorageR")
 
-ee_Initialize("csaybar")
-
 # Authenticate and init your EE session
 ee_Initialize(user = "mariapaulacaldas", drive = TRUE)
 
