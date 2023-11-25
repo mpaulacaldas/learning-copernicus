@@ -129,11 +129,14 @@ ee_Initialize(
 )
 ```
 
+The script [`rgee-example.R`][rgee-example] contains a quick demo using rgee 
+to extract the average monthly temperature for areas using ERA5-Land datasets.
 
 [ERA5]: https://developers.google.com/earth-engine/datasets/tags/era5-land
 [ERA5-Land]: https://developers.google.com/earth-engine/datasets/tags/era5-land
 [ee-install]: https://developers.google.com/earth-engine/guides/python_install
 [rgee-readme]: https://r-spatial.github.io/rgee/
+[rgee-example]: rgee-exemple.R
 [my-colab]: https://colab.research.google.com/drive/1n6cFYQDVKxIGmUtNRwbpmRZ97rYxqAsK
 [their-colab]: https://colab.research.google.com/github/google/earthengine-community/blob/master/guides/linked/ee-api-colab-setup.ipynb
 [ee-docs]: https://developers.google.com/earth-engine/apidocs/ee-image
