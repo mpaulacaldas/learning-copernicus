@@ -111,10 +111,11 @@ ee_utils_sak_copy(
 fs::file_delete(sak_file)
 
 # Check that we can create a bucket
-project_id <- ee_get_earthengine_path() %>% 
-  list.files(., "\\.json$", full.names = TRUE) %>% 
-  jsonlite::read_json() %>% 
+project_id <- ee_get_earthengine_path() |> 
+  list.files(., "\\.json$", full.names = TRUE) |> 
+  jsonlite::read_json() |> 
   '$'(project_id)
+
 googleCloudStorageR::gcs_create_bucket(
   paste0(project_id, "_bucket-001"), 
   projectId = project_id
@@ -129,7 +130,7 @@ ee_Initialize(
 )
 ```
 
-The script [`rgee-example.R`][rgee-example] contains a quick demo using rgee 
+The script [`rgee-example.R`][rgee-example] contains a quick demo showing how 
 to extract the average monthly temperature for areas using ERA5-Land datasets.
 
 [ERA5]: https://developers.google.com/earth-engine/datasets/tags/era5-land
