@@ -131,8 +131,38 @@ ee_Initialize(
 The script [`rgee-example.R`][rgee-example] contains a quick demo showing how 
 to extract the average monthly temperature for areas using ERA5-Land datasets.
 
+### Using Python, with `ee` and `geemap`
+
+I had a go at a "pure Python" implementation. For this, I used the specs from 
+the virtual environment created for `rgee`, and added a couple of extra 
+dependencies, notably [geemap](https://geemap.org), that contains helpers to 
+work with `ee`.
+
+To create the new environment:
+
+```bash
+# reticulate creates virtual environments at the user level
+source ~/.virtualenvs/rgee/bin/activate
+pip freeze > rgee-requirements.txt
+
+# for the Python example, I'll put the environment in the current working 
+# directory, since it's unlikely I will need to use this environment across 
+# many sessions
+virtualenv geemap
+source geemap/bin/activate
+pip install ee geemap geopandas
+pip freeze > geemap-requirements.txt
+```
+
+I didn't get as far as I liked exploring this option. The summary script is 
+[`geemap-example.py`][geemap-example]. To prepare it, I scanned through 
+[this course][eewpython] and [this demo][alex-uhi-demo] by Alex.
+
+[alex-uhi-demo]: https://gitlab.algobank.oecd.org/Alexandre.BANQUET/oecd-earth-engine-training/-/blob/main/Urban%20Heat%20Island%20Intensity.ipynb?ref_type=heads
+[eewpython]: https://github.com/csaybar/EEwPython
 [ERA5]: https://developers.google.com/earth-engine/datasets/tags/era5-land
 [ERA5-Land]: https://developers.google.com/earth-engine/datasets/tags/era5-land
+[geemap-example]: geemap-example.py
 [ee-install]: https://developers.google.com/earth-engine/guides/python_install
 [rgee-readme]: https://r-spatial.github.io/rgee/
 [rgee-example]: rgee-exemple.R
