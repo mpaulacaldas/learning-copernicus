@@ -24,6 +24,8 @@ b <- list(
   west  = floor(bb$xmin)
 )
 
+area_spec <- str_c(b$north, b$west, b$south, b$east, sep = "/")
+#> [1] "-11/-78/-13/-76"
 
 # Download ----------------------------------------------------------------
 
@@ -38,7 +40,7 @@ query_params <- list(
   day    = "01",
   time   = 0:23 |> str_c("00", sep = ":") |> str_pad(5, "left", "0"),
   format = "netcdf",
-  area   = str_c(b$north, b$west, b$south, b$east, sep = "/")
+  area   = area_spec
 )
 
 # Transfer the list to Python
