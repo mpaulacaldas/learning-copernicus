@@ -45,7 +45,6 @@ temp_1i = ee.Image(era5land_lima.first())
 temp_1i_mean = temp_1i.reduceRegion(ee.Reducer.mean(), geometry = lima_ee.geometry())
 temp_1i_info = temp_1i_mean.getInfo()
 pd.DataFrame.from_dict(temp_1i_info, orient = "index")
-
 #>                                   0
 #> dewpoint_temperature_2m  290.145794
 #> temperature_2m           293.339459
