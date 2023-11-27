@@ -244,5 +244,5 @@ wf_set_key(service = "cds")
 Scripts:
 
 - [`emcwfr-example.R`](emcwfr-example.R): Piecing together info from the
-  package README and the first example from the \[CDS Toolbox
-  documentation\]\[cdx-toolbox-docs\]
+  package README and the first example from the [CDS Toolbox
+  documentation](https://cds.climate.copernicus.eu/toolbox/doc/index.html)
