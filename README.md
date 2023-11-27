@@ -5,6 +5,8 @@
   - [Using R and `rgee`](#using-r-and-rgee)
   - [Using Python, with `ee` and
     `geemap`](#using-python-with-ee-and-geemap)
+- [Locally](#locally)
+  - [Fetching images](#fetching-images)
 
 ------------------------------------------------------------------------
 
@@ -151,9 +153,10 @@ ee_Initialize(
 )
 ```
 
-The script [`rgee-example.R`](rgee-exemple.R) contains a quick demo
-showing how to extract the average monthly temperature for areas using
-ERA5-Land datasets.
+Script:
+
+- [`rgee-example.R`](rgee-exemple.R): Quick demo showing how to extract
+  the average monthly temperature for areas using ERA5-Land datasets.
 
 ### Using Python, with `ee` and `geemap`
 
@@ -178,8 +181,46 @@ pip install ee geemap geopandas
 pip freeze > geemap-requirements.txt
 ```
 
-I didn’t get as far as I liked exploring this option. The summary script
-is [`geemap-example.py`](geemap-example.py). To prepare it, I scanned
-through [this course](https://github.com/csaybar/EEwPython) and [this
-demo](https://gitlab.algobank.oecd.org/Alexandre.BANQUET/oecd-earth-engine-training/-/blob/main/Urban%20Heat%20Island%20Intensity.ipynb?ref_type=heads)
-by Alex.
+Script:
+
+- [`geemap-example.py`](geemap-example.py): I didn’t get as far as I
+  liked exploring this option. To prepare it, I scanned through [this
+  course](https://github.com/csaybar/EEwPython) and [Alex’
+  demo](https://gitlab.algobank.oecd.org/Alexandre.BANQUET/oecd-earth-engine-training/-/blob/main/Urban%20Heat%20Island%20Intensity.ipynb?ref_type=heads).
+
+## Locally
+
+### Fetching images
+
+#### Using Python’s `cdsapi` package
+
+For this, I registered to the [Copernicus Data
+Store](https://cds.climate.copernicus.eu/user/register), created a
+`.cdsapirc` key file with my uid and API key details, and installed
+`cdi` under its own environment. For my work computer (Windows), I used
+`Anaconda3` and `conda` to create the virtual environment, following the
+instructions from the CDS website.
+
+In my personal computer, I created the virtual environment using
+`reticulate`, to make sure I use the same Python version as for `rgee`
+(see above).
+
+``` r
+library(reticulate)
+virtualenv_create("cds", python = conda_python("r-reticulate"))
+py_install("cdsapi", envname = "cds")
+
+# copy and paste the code displayed in the first block in:
+# https://cds.climate.copernicus.eu/api-how-to
+file.edit("~/.cdsapirc")
+```
+
+Script:
+
+- [`cdsapi-example.py`](cdsapi-example.py): Example from the dataset
+  info page.
+- [`cdsapi-example.R`](cdsapi-example.py): Inspired by [Dominic Royé’s
+  blog
+  post](https://dominicroye.github.io/en/2018/access-to-climate-reanalysis-data-from-r/).
+  Unlike the Python example, this one uses ERA5-Land hourly data on
+  single levels, which are easier to iterate over.
