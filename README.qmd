@@ -1,4 +1,8 @@
-# How to use Copernicus
+---
+title: How to use Copernicus
+format: gfm
+toc: true
+---
 
 I want to use ERA5 Copernicus datasets to create heat-stress variables for many 
 points or small areas (e.g. postal areas, SAU, NUTS3) across several countries.
