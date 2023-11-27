@@ -172,9 +172,7 @@ Script:
 
 ## Locally
 
-### Fetching images
-
-#### Using Python's `cdsapi` package
+### Fetching with Python's `cdsapi` package
 
 For this, I registered to the [Copernicus Data Store][cds-register], created 
 a `.cdsapirc` key file with my uid and API key details, and installed `cdi` 
@@ -202,11 +200,34 @@ Script:
   [Dominic Royé's blog post][cdsapi-reticulate]. Unlike the Python example, 
   this one uses ERA5-Land hourly data on single levels, which are easier to 
   iterate over.
+  
+### Fetching and pre-processing with R's `emcwfr`
+
+- Advantages: Easiest set-up, and easy to make workflow requests.
+- Disadvantages: Still need to test in work computer, with more ambitious 
+  requests.
+
+I installed the package and registered my API key details as specified in the 
+package README.
+
+```r
+install.packages("ecmwfr")
+library("ecmwfr")
+wf_set_key(service = "cds")
+```
+
+Scripts:
+
+- [`emcwfr-example.R`](emcwfr-example.R): Piecing together info from the package
+  README and the first example from the 
+  [CDS Toolbox documentation][cdx-toolbox-docs]
+
 
 [alex-uhi-demo]: https://gitlab.algobank.oecd.org/Alexandre.BANQUET/oecd-earth-engine-training/-/blob/main/Urban%20Heat%20Island%20Intensity.ipynb?ref_type=heads
 [cdsapi-example]: https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-land?tab=form
 [cdsapi-reticulate]: https://dominicroye.github.io/en/2018/access-to-climate-reanalysis-data-from-r/
 [cds-register]: https://cds.climate.copernicus.eu/user/register
+[cds-toolbox-docs]: https://cds.climate.copernicus.eu/toolbox/doc/index.html
 [eewpython]: https://github.com/csaybar/EEwPython
 [emcwfr]: https://github.com/bluegreen-labs/ecmwfr#workflow-requests
 [ERA5]: https://developers.google.com/earth-engine/datasets/tags/era5-land

@@ -6,7 +6,10 @@
   - [Using Python, with `ee` and
     `geemap`](#using-python-with-ee-and-geemap)
 - [Locally](#locally)
-  - [Fetching images](#fetching-images)
+  - [Fetching with Python’s `cdsapi`
+    package](#fetching-with-pythons-cdsapi-package)
+  - [Fetching and pre-processing with R’s
+    `emcwfr`](#fetching-and-pre-processing-with-rs-emcwfr)
 
 ------------------------------------------------------------------------
 
@@ -190,9 +193,7 @@ Script:
 
 ## Locally
 
-### Fetching images
-
-#### Using Python’s `cdsapi` package
+### Fetching with Python’s `cdsapi` package
 
 For this, I registered to the [Copernicus Data
 Store](https://cds.climate.copernicus.eu/user/register), created a
@@ -224,3 +225,24 @@ Script:
   post](https://dominicroye.github.io/en/2018/access-to-climate-reanalysis-data-from-r/).
   Unlike the Python example, this one uses ERA5-Land hourly data on
   single levels, which are easier to iterate over.
+
+### Fetching and pre-processing with R’s `emcwfr`
+
+- Advantages: Easiest set-up, and easy to make workflow requests.
+- Disadvantages: Still need to test in work computer, with more
+  ambitious requests.
+
+I installed the package and registered my API key details as specified
+in the package README.
+
+``` r
+install.packages("ecmwfr")
+library("ecmwfr")
+wf_set_key(service = "cds")
+```
+
+Scripts:
+
+- [`emcwfr-example.R`](emcwfr-example.R): Piecing together info from the
+  package README and the first example from the \[CDS Toolbox
+  documentation\]\[cdx-toolbox-docs\]
