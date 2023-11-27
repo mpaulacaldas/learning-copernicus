@@ -2,9 +2,12 @@
 title: How to use Copernicus
 format: gfm
 toc: true
+code-fold: true
 ---
 
-I want to use ERA5 Copernicus datasets to create heat-stress variables for many 
+---
+
+I want to use ERA5 Copernicus datasets to create heatstress variables for many 
 points or small areas (e.g. postal areas, SAU, NUTS3) across several countries.
 
 This is an early exploration focusing on how to _extract_ some of these metrics,

@@ -6,7 +6,9 @@
   - [Using Python, with `ee` and
     `geemap`](#using-python-with-ee-and-geemap)
 
-I want to use ERA5 Copernicus datasets to create heat-stress variables
+------------------------------------------------------------------------
+
+I want to use ERA5 Copernicus datasets to create heatstress variables
 for many points or small areas (e.g. postal areas, SAU, NUTS3) across
 several countries.
 
