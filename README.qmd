@@ -198,7 +198,7 @@ file.edit("~/.cdsapirc")
 Script:
 
 - [`cdsapi-example.py`](cdsapi-example.py): Example from the dataset info page.
-- [`cdsapi-example.R`](cdsapi-example.py): Inspired by 
+- [`cdsapi-example.R`](cdsapi-example.R): Inspired by 
   [Dominic Royé's blog post][cdsapi-reticulate]. Unlike the Python example, 
   this one uses ERA5-Land hourly data on single levels, which are easier to 
   iterate over.

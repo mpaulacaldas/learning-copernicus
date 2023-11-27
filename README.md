@@ -219,7 +219,7 @@ Script:
 
 - [`cdsapi-example.py`](cdsapi-example.py): Example from the dataset
   info page.
-- [`cdsapi-example.R`](cdsapi-example.py): Inspired by [Dominic Royé’s
+- [`cdsapi-example.R`](cdsapi-example.R): Inspired by [Dominic Royé’s
   blog
   post](https://dominicroye.github.io/en/2018/access-to-climate-reanalysis-data-from-r/).
   Unlike the Python example, this one uses ERA5-Land hourly data on
