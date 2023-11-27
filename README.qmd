@@ -165,7 +165,33 @@ I didn't get as far as I liked exploring this option. The summary script is
 [`geemap-example.py`][geemap-example]. To prepare it, I scanned through 
 [this course][eewpython] and [this demo][alex-uhi-demo] by Alex.
 
+
+## Locally
+
+### Fetching the data
+
+#### Using Python's `cdi` package
+
+For this, I registered to the [Copernicus Data Store][cds-register], created 
+a `.cdsapirc` key file with my uid and API key details, and installed `cdi` 
+under its own environment. For my work computer (Windows), I used `Anaconda3` 
+and `conda` to create the virtual environment. 
+
+In my personal computer, I created it using `reticulate`, to make sure I'm 
+using the same Python version as for `rgee` (see above).
+
+```r
+library(reticulate)
+virtualenv_create("cds", python = conda_python("r-reticulate"))
+py_install("cdsapi", envname = "cds")
+
+# copy and paste the code displayed in the first block in:
+# https://cds.climate.copernicus.eu/api-how-to
+file.edit("~/.cdsapirc")
+```
+
 [alex-uhi-demo]: https://gitlab.algobank.oecd.org/Alexandre.BANQUET/oecd-earth-engine-training/-/blob/main/Urban%20Heat%20Island%20Intensity.ipynb?ref_type=heads
+[cds-register]: https://cds.climate.copernicus.eu/user/register
 [eewpython]: https://github.com/csaybar/EEwPython
 [ERA5]: https://developers.google.com/earth-engine/datasets/tags/era5-land
 [ERA5-Land]: https://developers.google.com/earth-engine/datasets/tags/era5-land
