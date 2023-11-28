@@ -10,6 +10,7 @@
     package](#fetching-with-pythons-cdsapi-package)
   - [Fetching and pre-processing with R’s
     `emcwfr`](#fetching-and-pre-processing-with-rs-emcwfr)
+  - [Zonal statistics](#zonal-statistics)
 
 ------------------------------------------------------------------------
 
@@ -76,6 +77,9 @@ setup.
 
 For reference, these were the steps I followed:
 
+<details>
+<summary>Code</summary>
+
 ``` r
 install.packages("rgee")
 
@@ -111,7 +115,12 @@ rgee::ee_install_set_pyenv(
 )
 ```
 
+</details>
+
 And after re-starting R:
+
+<details>
+<summary>Code</summary>
 
 ``` r
 library(reticulate)
@@ -156,6 +165,8 @@ ee_Initialize(
 )
 ```
 
+</details>
+
 Script:
 
 - [`rgee-example.R`](rgee-exemple.R): Quick demo showing how to extract
@@ -170,6 +181,9 @@ helpers to work with `ee`.
 
 To create the new environment:
 
+<details>
+<summary>Code</summary>
+
 ``` bash
 # reticulate creates virtual environments at the user level
 source ~/.virtualenvs/rgee/bin/activate
@@ -183,6 +197,8 @@ source geemap/bin/activate
 pip install ee geemap geopandas
 pip freeze > geemap-requirements.txt
 ```
+
+</details>
 
 Script:
 
@@ -206,6 +222,12 @@ In my personal computer, I created the virtual environment using
 `reticulate`, to make sure I use the same Python version as for `rgee`
 (see above).
 
+Overall, this wasn’t too hard, but it did require going through many
+links and being careful reading the documentation.
+
+<details>
+<summary>Code</summary>
+
 ``` r
 library(reticulate)
 virtualenv_create("cds", python = conda_python("r-reticulate"))
@@ -215,6 +237,8 @@ py_install("cdsapi", envname = "cds")
 # https://cds.climate.copernicus.eu/api-how-to
 file.edit("~/.cdsapirc")
 ```
+
+</details>
 
 Script:
 
@@ -228,12 +252,11 @@ Script:
 
 ### Fetching and pre-processing with R’s `emcwfr`
 
-- Advantages: Easiest set-up, and easy to make workflow requests.
-- Disadvantages: Still need to test in work computer, with more
-  ambitious requests.
-
 I installed the package and registered my API key details as specified
 in the package README.
+
+<details>
+<summary>Code</summary>
 
 ``` r
 install.packages("ecmwfr")
@@ -241,8 +264,21 @@ library("ecmwfr")
 wf_set_key(service = "cds")
 ```
 
+</details>
+
+This was the easiest set-up. I also like that it makes it easy to send
+workflow requests (though these must not be as fast or reliable as EE).
+I still need to test in work computer, and benchmark relative to more
+ambitious requests.
+
 Scripts:
 
 - [`emcwfr-example.R`](emcwfr-example.R): Piecing together info from the
   package README and the first example from the [CDS Toolbox
   documentation](https://cds.climate.copernicus.eu/toolbox/doc/index.html)
+
+### Zonal statistics
+
+Scripts:
+
+- [`stars-demo.md`](stars-demo.md)

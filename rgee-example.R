@@ -146,4 +146,3 @@ ggsave("rgee-example-peru-abs.png")
 # https://csaybar.github.io/rgee-examples/
 # https://stackoverflow.com/questions/67974730/extract-values-of-multiple-lat-lon-for-image-collection-in-earth-engine-using-rg
 # https://confluence.ecmwf.int/display/FCST/Gaussian+grids
-# https://github.com/csaybar/EEwPython

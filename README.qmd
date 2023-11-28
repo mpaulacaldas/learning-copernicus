@@ -3,6 +3,8 @@ title: How to use Copernicus
 format: gfm
 toc: true
 code-fold: true
+code-summary: Code
+eval: false
 ---
 
 ---
@@ -55,7 +57,7 @@ free trial credit, but somehow already eat through 20 EUR only in the setup.
 
 For reference, these were the steps I followed:
 
-```r
+```{r}
 install.packages("rgee")
 
 # Get the username
@@ -92,7 +94,7 @@ rgee::ee_install_set_pyenv(
 
 And  after re-starting R:
 
-```r
+```{r}
 library(reticulate)
 use_virtualenv("rgee")
 library(rgee)
@@ -149,7 +151,7 @@ work with `ee`.
 
 To create the new environment:
 
-```bash
+```{bash}
 # reticulate creates virtual environments at the user level
 source ~/.virtualenvs/rgee/bin/activate
 pip freeze > rgee-requirements.txt
@@ -183,7 +185,10 @@ the CDS website.
 In my personal computer, I created the virtual environment using `reticulate`, 
 to make sure I use the same Python version as for `rgee` (see above).
 
-```r
+Overall, this wasn't too hard, but it did require going through many links and 
+being careful reading the documentation.
+
+```{r}
 library(reticulate)
 virtualenv_create("cds", python = conda_python("r-reticulate"))
 py_install("cdsapi", envname = "cds")
@@ -203,24 +208,30 @@ Script:
   
 ### Fetching and pre-processing with R's `emcwfr`
 
-- Advantages: Easiest set-up, and easy to make workflow requests.
-- Disadvantages: Still need to test in work computer, with more ambitious 
-  requests.
-
 I installed the package and registered my API key details as specified in the 
 package README.
 
-```r
+```{r}
 install.packages("ecmwfr")
 library("ecmwfr")
 wf_set_key(service = "cds")
 ```
+
+This was the easiest set-up. I also like that it makes it easy to send workflow 
+requests (though these must not be as fast or reliable as EE). I still need to 
+test in work computer, and benchmark relative to more ambitious requests.
 
 Scripts:
 
 - [`emcwfr-example.R`](emcwfr-example.R): Piecing together info from the package
   README and the first example from the 
   [CDS Toolbox documentation][cds-toolbox-docs]
+
+### Zonal statistics
+
+Scripts:
+
+- [`stars-demo.md`](stars-demo.md)
 
 
 [alex-uhi-demo]: https://gitlab.algobank.oecd.org/Alexandre.BANQUET/oecd-earth-engine-training/-/blob/main/Urban%20Heat%20Island%20Intensity.ipynb?ref_type=heads
